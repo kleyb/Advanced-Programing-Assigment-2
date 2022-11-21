@@ -13,12 +13,12 @@ public:
 	virtual int calculateArea() = 0;
 	virtual int calculatePerimeter() = 0;
 	virtual void calculatePoint() = 0;
-	void toString();
+	virtual void toString();
 	Points leftTop;
 	Points rightBottom;
 	Points leftBottom;
 	Points rightTop;
 	bool isCircular = false;
 	vector<Points> points;
-
+	
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "Rectangle.h"
 #include"Points.h"
+#include <format>
 
 Rectangle::Rectangle(int x, int y, int h, int w)
 {
@@ -31,4 +32,9 @@ int Rectangle::calculateArea()
 int Rectangle::calculatePerimeter()
 {
 	return (height + width) * 2;
+}
+
+void Rectangle::toString()
+{
+	printf("");
 }

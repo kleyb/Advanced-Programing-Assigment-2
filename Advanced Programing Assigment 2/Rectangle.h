@@ -11,5 +11,6 @@ public:
 	void calculatePoint() ;
 	int calculateArea();
 	int calculatePerimeter();
+	void toString();
 
 };
