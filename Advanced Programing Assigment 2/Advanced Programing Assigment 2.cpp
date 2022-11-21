@@ -32,7 +32,7 @@ int main()
 	string userCommand;
 	vector <Shape*> shapes;     // this one will hold your shapes
 	vector <string> parameters; // this one will hold parameters for the commands
-
+	int x, y, h, w;
 
 	while (userCommand.compare("exit") != 0)
 	{
@@ -47,42 +47,42 @@ int main()
 		// implement a string tokenizer to populate the parameters vector 
 		// check function strtok_s
 
-		char *next_token = NULL;
+		char* next_token = NULL;
 		string paramter_s;
-		char *parameter = strtok_s(cstr, " ", &next_token);
+		char* parameter = strtok_s(cstr, " ", &next_token);
 
 		while (parameter != NULL) {
 			cout << parameter << endl;
 			paramter_s = parameter;
 			parameters.push_back(paramter_s);
 			parameter = strtok_s(NULL, " ", &next_token);
-			
+
 		}
 
-	//	// as a result of the process, parameters[0] should hold your command, followed by your parameters 
-	//	string command = parameters[0];
+		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
+		string command = parameters[0];
 
 
-	//	// in the following code, consider checking for the arguments.
-	//	// in case of too few arguments, you may remind the user the correct format
+		// in the following code, consider checking for the arguments.
+		// in case of too few arguments, you may remind the user the correct format
 
-	//	if (command.compare("addR") == 0) {
-	//		// get parameters in the correct order
-	//		// The following four lines have a type mismatch error
-	//		// note that the the parameters vector contains ascii values
-	//		// HINT: stoi function converts from string to int
+		if (command.compare("addR") == 0) {
+			// get parameters in the correct order
+			// The following four lines have a type mismatch error
+			// note that the the parameters vector contains ascii values
+			// HINT: stoi function converts from string to int
 
-	//		x = parameters[1].c_str(); // fix me! also note that x is not previously defined :(
-	//		// int y = ...
-	//		// int h = ...
-	//		// int w = ...
+			x = stoi(parameters[1]); // fix me! also note that x is not previously defined :(
+			y = stoi(parameters[2]);
+			h = stoi(parameters[3]);
+			w = stoi(parameters[4]);
 
 
-	//		Rectangle* r = new Rectangle(x, y, h, w);
-	//		shapes.push_back(r);
-	//		cout << r->toString(); /* instead of this, you may implement operator overloadig and
-	//								use cout << r which will give you additional points */
-	//	}
+			Rectangle* r = new Rectangle(x, y, h, w);
+			shapes.push_back(r);
+			cout << r->toString(); /* instead of this, you may implement operator overloadig and
+									use cout << r which will give you additional points */
+		}
 	//	else if (command.compare("addS") == 0) {
 	//		// get parameters
 	//		// ...
@@ -130,10 +130,11 @@ int main()
 	//	// do any necessary postprocessing at the end of each loop...
 	//	// yes, there is some necessary postprocessing...
 	//	cout << endl << endl;
-	}
+		}
 
-	//cout << "Press any key to continue...";
-	//std::getchar();
+		//cout << "Press any key to continue...";
+		//std::getchar();
 
-	return 0;
+		return 0;
+	
 }
