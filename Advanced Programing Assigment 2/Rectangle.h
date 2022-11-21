@@ -1,14 +1,14 @@
 #pragma once
 #include"Movable.h"
 #include"Shape.h"
+#include"Points.h"
 
 class Rectangle : public Movable, public Shape {
 public:
-	Rectangle(double x, double y, double h, double w);
-	double height;
-	double width;
+	Rectangle(int x, int y, int h, int w);
+	int height{};
+	int width{};
 	void calculatePoint() ;
-	double calculateArea();
-	double calculatePerimeter();
-	Points leftBottom, rightTop;
+	int calculateArea();
+	int calculatePerimeter();
 };

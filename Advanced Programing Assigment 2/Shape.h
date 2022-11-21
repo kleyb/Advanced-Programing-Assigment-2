@@ -14,8 +14,10 @@ public:
 	virtual int calculaPerimeter() = 0;
 	virtual void calculatePoint() = 0;
 	void toString();
-	//double* lefttop[2];
-	Points leftTop, rightBottom;
+	Points leftTop;
+	Points rightBottom;
+	Points leftBottom;
+	Points rightTop;
 	bool isCircular = false;
 	vector<Points> points;
 
