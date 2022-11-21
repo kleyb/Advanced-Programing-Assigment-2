@@ -3,18 +3,20 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include"Points.h"
 
 using namespace std;
 
 class Shape {
 public:
 	Shape();
-	virtual int calculateArea() = 0;
+	virtual double calculateArea() = 0;
 	virtual int calculaPerimeter() = 0;
-	virtual int calculatePoint() = 0;
+	virtual void calculatePoint() = 0;
 	void toString();
-	int lefttop[2];
+	//double* lefttop[2];
+	Points leftTop, rightBottom;
 	bool isCircular = false;
-	vector<int> points;
+	vector<Points> points;
 
 };
