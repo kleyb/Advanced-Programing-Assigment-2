@@ -32,7 +32,7 @@ int main()
 	string userCommand;
 	vector <Shape*> shapes;     // this one will hold your shapes
 	vector <string> parameters; // this one will hold parameters for the commands
-	int x, y, h, w;
+	int x, y, h,e, w;
 
 	while (userCommand.compare("exit") != 0)
 	{
@@ -84,14 +84,19 @@ int main()
 				/* instead of this, you may implement operator overloadig and
 								use cout << r which will give you additional points */
 			r->toString();
+			
 		}
-	//	else if (command.compare("addS") == 0) {
-	//		// get parameters
-	//		// ...
-	//		Square* s = new Square(x, y, e);
-	//		shapes.push_back(s);
-	//		cout << s->toString();
-	//	}
+		else if (command.compare("addS") == 0) {
+			// get parameters
+			// ...
+			x = stoi(parameters[1]);
+			y = stoi(parameters[2]);
+			e = stoi(parameters[3]);
+			Square* s = new Square(x, y, e);
+			shapes.push_back(s);
+			//cout << s->toString();
+			s->toString();
+		}
 
 	//	if (command.compare("addC") == 0) {
 	//		// get parameters
