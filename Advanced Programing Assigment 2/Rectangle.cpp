@@ -14,7 +14,7 @@ Rectangle::Rectangle(int x, int y, int h, int w)
 void Rectangle::calculatePoint()
 {
 	rightTop.setX(leftTop.getX()+width);
-	rightTop.setX(leftTop.getX());
+	rightTop.setY(leftTop.getY());
 
 	leftBottom.setX(leftTop.getX());
 	leftBottom.setY(leftTop.getY()+height);
@@ -36,5 +36,10 @@ int Rectangle::calculatePerimeter()
 
 void Rectangle::toString()
 {
-	printf("");
+	calculatePoint();
+	printf("Rectangle [H = %i,w = %i]\n",height,width);
+	printf("Points[(%i, %i)(%i, %i)(%i, %i)(%i, %i)]\n",leftTop.getX(),leftTop.getY(), 
+		rightTop.getX(),rightTop.getY(), rightBottom.getX(),rightBottom.getY(), leftBottom.getX(), leftBottom.getY());
+	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
+
 }

@@ -52,7 +52,7 @@ int main()
 		char* parameter = strtok_s(cstr, " ", &next_token);
 
 		while (parameter != NULL) {
-			cout << parameter << endl;
+			//cut << parameter << endl;
 			paramter_s = parameter;
 			parameters.push_back(paramter_s);
 			parameter = strtok_s(NULL, " ", &next_token);
@@ -80,8 +80,10 @@ int main()
 
 			Rectangle* r = new Rectangle(x, y, h, w);
 			shapes.push_back(r);
-			cout << r->toString(); /* instead of this, you may implement operator overloadig and
-									use cout << r which will give you additional points */
+			//cout << r->toString(); 
+				/* instead of this, you may implement operator overloadig and
+								use cout << r which will give you additional points */
+			r->toString();
 		}
 	//	else if (command.compare("addS") == 0) {
 	//		// get parameters
