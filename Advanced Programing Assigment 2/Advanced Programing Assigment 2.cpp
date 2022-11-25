@@ -32,7 +32,7 @@ int main()
 	string userCommand;
 	vector <Shape*> shapes;     // this one will hold your shapes
 	vector <string> parameters; // this one will hold parameters for the commands
-	int x, y, h,e, w;
+	int x, y, h,e, w, r ;
 
 	while (userCommand.compare("exit") != 0)
 	{
@@ -98,21 +98,24 @@ int main()
 			s->toString();
 		}
 
-	//	if (command.compare("addC") == 0) {
-	//		// get parameters
-	//		// ...
-	//		Circle* c = new Circle(x, y, r);
-	//		shapes.push_back(c);
-	//		cout << c->toString();
+		if (command.compare("addC") == 0) {
+			// get parameters
+			// ...
+			x = stoi(parameters[1]);
+			y = stoi(parameters[2]);
+			r = stoi(parameters[3]);
+			Circle* c = new Circle(x, y, r);
+			shapes.push_back(c);
+			//cout << c->toString();
+			c->toString();
+		}
+		else if (command.compare("scale") == 0) {
+			// scale object at index... the scaling needs to be isotropic in case of circle and square 
+			// you may want to check if the index exists or not!
 
-	//	}
-	//	else if (command.compare("scale") == 0) {
-	//		// scale object at index... the scaling needs to be isotropic in case of circle and square 
-	//		// you may want to check if the index exists or not!
-
-	//		// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
-	//		// As a result all your derived classes have scale functions... 
-	//		// You may need to use type casting wisely to use polymorphic functionality!
+			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
+			// As a result all your derived classes have scale functions... 
+			// You may need to use type casting wisely to use polymorphic functionality!
 
 	//	}
 	//	else if (command.compare("move") == 0) {

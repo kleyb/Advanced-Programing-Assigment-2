@@ -3,6 +3,6 @@ class Movable
 {
 public:
 	
-	void move();
+	void virtual move(int newX, int newY) = 0;
 	void scale();
 };
