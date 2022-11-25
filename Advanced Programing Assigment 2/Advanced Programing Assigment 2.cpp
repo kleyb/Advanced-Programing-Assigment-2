@@ -109,7 +109,7 @@ int main()
 			//cout << c->toString();
 			c->toString();
 		}
-		else if (command.compare("scale") == 0) {
+		//else if (command.compare("scale") == 0) {
 			// scale object at index... the scaling needs to be isotropic in case of circle and square 
 			// you may want to check if the index exists or not!
 

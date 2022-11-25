@@ -19,6 +19,19 @@ void Square::calculatePoint()
 	leftBottom.setY(leftTop.getY() + edge);
 }
 
+void Square::calculatePoint(int newX, int newY)
+{
+	leftTop.setX(newX);
+	leftTop.setY(newY);
+
+	calculatePoint();
+}
+
+void Square::move(int newX, int newY)
+{
+	calculatePoint(newX, newY);
+}
+
 int Square::calculateArea()
 {
 	return edge * edge;

@@ -6,6 +6,8 @@ public:
 	Square(int x ,int y,int e);
 	int edge;
 	void calculatePoint();
+	void calculatePoint(int newX, int newY);
+	void move(int newX, int newY);
 	int calculateArea();
 	int calculatePerimeter();
 	void toString();

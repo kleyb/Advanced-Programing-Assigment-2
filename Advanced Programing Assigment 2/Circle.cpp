@@ -18,8 +18,7 @@ void Circle::calculatePoint(int newX, int newY)
 	leftTop.setX(newX);
 	leftTop.setY(newY);
 
-	rightBottom.setX(round(leftTop.getX() + 2 * radius));
-	rightBottom.setY(round(leftTop.getY() + 2 * radius));
+	calculatePoint();
 }
 
 int Circle::calculateArea()
