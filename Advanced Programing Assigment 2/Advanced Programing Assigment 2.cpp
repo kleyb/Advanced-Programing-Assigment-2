@@ -118,21 +118,26 @@ int main()
 			// You may need to use type casting wisely to use polymorphic functionality!
 
 	//	}
-	//	else if (command.compare("move") == 0) {
-	//		// move object at index 
-	//		int shapeNo; // read from parameters
-	//		// you may want to check if the index exists or not!
+		else if (command.compare("move") == 0) {
+			// move object at index 
+			if (stoi(parameters[1]) == NULL) continue; 
+			
+			int shapeNo = stoi(parameters[1]);
+			
+			 // read from parameters
+			// you may want to check if the index exists or not!
 
-	//		// Study the following code. A Shape object is not Movable, but all derived classes are...
-	//		// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting
-	//		Movable* m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
-	//		m->move(x, y);
-	//		// scale should work similarly...
+			// Study the following code. A Shape object is not Movable, but all derived classes are...
+			// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting
+			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
+			m->move(x, y);
+			// scale should work similarly...
 
-	//		// note that here you should see the corresponding toString output for the derived classes...
-	//		// if toString is not a virtual function, you may see the base class functionality :(
-	//		cout << shapes[shapeNo - 1]->toString();
-	//	}
+			// note that here you should see the corresponding toString output for the derived classes...
+			// if toString is not a virtual function, you may see the base class functionality :(
+			shapes[shapeNo - 1]->toString();
+
+		}
 	//	else if (command.compare("display") == 0) {
 	//		// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
 	//	}
