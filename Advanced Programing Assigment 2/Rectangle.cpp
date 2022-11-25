@@ -56,3 +56,7 @@ void Rectangle::toString()
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 
 }
+
+void Rectangle::scale(float scaleX, float scaleY)
+{
+}

@@ -43,3 +43,8 @@ void Circle::toString()
 	printf("Points[(%i, %i)(%i, %i)]\n", leftTop.getX(), leftTop.getY(), rightBottom.getX(), rightBottom.getY());
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 }
+
+void Circle::scale(float scaleX, float scaleY)
+{
+
+}

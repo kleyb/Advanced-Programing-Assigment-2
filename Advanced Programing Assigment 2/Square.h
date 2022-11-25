@@ -11,4 +11,5 @@ public:
 	int calculateArea();
 	int calculatePerimeter();
 	void toString();
+	void virtual scale(float scaleX, float scaleY);
 };

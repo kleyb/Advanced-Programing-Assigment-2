@@ -109,15 +109,17 @@ int main()
 			//cout << c->toString();
 			c->toString();
 		}
-		//else if (command.compare("scale") == 0) {
+		else if (command.compare("scale") == 0) {
 			// scale object at index... the scaling needs to be isotropic in case of circle and square 
 			// you may want to check if the index exists or not!
+			if (stoi(parameters[1]) == NULL) continue;
+			int shapeNo = stoi(parameters[1]);
 
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
 			// You may need to use type casting wisely to use polymorphic functionality!
 
-	//	}
+		}
 		else if (command.compare("move") == 0) {
 			// move object at index 
 			if (stoi(parameters[1]) == NULL) continue; 

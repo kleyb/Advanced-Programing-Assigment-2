@@ -50,3 +50,7 @@ void Square::toString()
 		rightTop.getX(), rightTop.getY(), rightBottom.getX(), rightBottom.getY(), leftBottom.getX(), leftBottom.getY());
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 }
+
+void Square::scale(float scaleX, float scaleY)
+{
+}

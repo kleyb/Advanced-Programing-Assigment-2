@@ -13,6 +13,7 @@ public:
 	int calculatePerimeter();
 	void move(int newX, int newY);
 	void toString();
+	void virtual scale(float scaleX, float scaleY);
 private:
 	const double pi = 3.14159265358979323846; // constant variable as PI values never changes
 	double radius;
