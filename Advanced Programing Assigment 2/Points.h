@@ -2,10 +2,10 @@
 class Points {
 public:
 	Points();
-	void setX(int x);
-	void setY(int y);
+	void setX(float x);
+	void setY(float y);
 	int getX();
 	int getY();
 private:
-	int x, y;
+	float x, y;
 };

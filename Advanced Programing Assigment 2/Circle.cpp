@@ -23,7 +23,8 @@ void Circle::calculatePoint(int newX, int newY)
 
 int Circle::calculateArea()
 {
-	return round(pi * radius * radius); // returns version of the result 
+	int temp = round(pi * radius * radius);
+	return temp; // returns version of the result 
 }
 
 int Circle::calculatePerimeter() {
@@ -39,12 +40,17 @@ void Circle::move(int newX, int newY)
 void Circle::toString()
 {
 	calculatePoint();
-	printf("Rectangle [R = %d]\n", radius);
+	printf("Rectangle [R = %f]\n", radius);
 	printf("Points[(%i, %i)(%i, %i)]\n", leftTop.getX(), leftTop.getY(), rightBottom.getX(), rightBottom.getY());
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 }
 
 void Circle::scale(float scaleX, float scaleY)
 {
+	leftTop.setX(leftTop.getX() - scaleX);
+	leftTop.setY(leftTop.getY() - scaleY);
+	calculatePoint();
+	radius = leftBottom.getY() - leftTop.getY();
 
+	printf("HO");
 }

@@ -16,12 +16,12 @@ Points::Points()
 	x = 0;
 }
 
-void Points::setX(int x)
+void Points::setX(float x)
 {
 	this->x = x;
 }
 
-void Points::setY(int y)
+void Points::setY(float y)
 {
 	this->y = y;
 }

@@ -114,11 +114,13 @@ int main()
 			// you may want to check if the index exists or not!
 			if (stoi(parameters[1]) == NULL) continue;
 			int shapeNo = stoi(parameters[1]);
-
+			x = stoi(parameters[2]);
+			y = stoi(parameters[3]);
 			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
 			// As a result all your derived classes have scale functions... 
 			// You may need to use type casting wisely to use polymorphic functionality!
-
+			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo]);
+			m->scale(x, y);
 		}
 		else if (command.compare("move") == 0) {
 			// move object at index 
@@ -147,11 +149,11 @@ int main()
 	//	// do any necessary postprocessing at the end of each loop...
 	//	// yes, there is some necessary postprocessing...
 	//	cout << endl << endl;
-		}
-
-		//cout << "Press any key to continue...";
-		//std::getchar();
-
+	
+		
+		cout << "Press any key to continue...";
+		std::getchar();
+	}
 		return 0;
 	
 }
