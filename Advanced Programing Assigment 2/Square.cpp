@@ -53,4 +53,7 @@ void Square::toString()
 
 void Square::scale(float scaleX, float scaleY)
 {
+	edge = edge* scaleX;
+	calculatePoint();
+
 }

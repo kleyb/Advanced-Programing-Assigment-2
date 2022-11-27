@@ -155,8 +155,8 @@ int main()
 	
 		parameters.clear();
 		userCommand = "";
-		//cout << "Press any key to continue...";
-		//std::getchar();
+		cout << "Press any key to continue...";
+		std::getchar();
 	}
 		return 0;
 	

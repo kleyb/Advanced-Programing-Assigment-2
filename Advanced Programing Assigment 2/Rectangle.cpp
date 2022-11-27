@@ -21,7 +21,6 @@ void Rectangle::calculatePoint()
 
 	rightBottom.setX(leftTop.getX()+width);
 	rightBottom.setY(leftTop.getY()+height);
-
 }
 
 void Rectangle::calculatePoint(int newX, int newY)
@@ -59,4 +58,8 @@ void Rectangle::toString()
 
 void Rectangle::scale(float scaleX, float scaleY)
 {
+	height = height * scaleX;
+	width = width * scaleY;
+
+	calculatePoint();
 }
