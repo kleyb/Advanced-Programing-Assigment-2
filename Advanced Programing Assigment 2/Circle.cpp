@@ -45,12 +45,10 @@ void Circle::toString()
 	printf("Points[(%i, %i)(%i, %i)]\n", leftTop.getX(), leftTop.getY(), rightBottom.getX(), rightBottom.getY());
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 }
-
-void Circle::scale(float scaleX, float scaleY)
-{
-	/*leftTop.setX(leftTop.getX() * scaleX);
-	leftTop.setY(leftTop.getY() * scaleY);*/
-	
-	radius = radius * scaleX;
+// Scales the circle based on the first value given
+// As Circles do not have 2 values , only one will be used 
+void Circle::scale(float scaleX, float scaleY) 
+{	
+	radius = radius * scaleX; // Uses scaleXx to calculate the scale the radius , therefore scaling the shape
 	calculatePoint();
 }
