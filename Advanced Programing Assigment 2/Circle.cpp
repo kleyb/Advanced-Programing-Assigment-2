@@ -5,6 +5,7 @@ Circle::Circle(int x, int y, double r)
 	radius = r;
 	leftTop.setX(x);
 	leftTop.setY(y);
+	isCircular = true;
 }
 
 void Circle::calculatePoint()
@@ -40,17 +41,16 @@ void Circle::move(int newX, int newY)
 void Circle::toString()
 {
 	calculatePoint();
-	printf("Rectangle [R = %f]\n", radius);
+	printf("Circle [R = %f]\n", radius);
 	printf("Points[(%i, %i)(%i, %i)]\n", leftTop.getX(), leftTop.getY(), rightBottom.getX(), rightBottom.getY());
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 }
 
 void Circle::scale(float scaleX, float scaleY)
 {
-	leftTop.setX(leftTop.getX() - scaleX);
-	leftTop.setY(leftTop.getY() - scaleY);
+	/*leftTop.setX(leftTop.getX() * scaleX);
+	leftTop.setY(leftTop.getY() * scaleY);*/
+	
+	radius = radius * scaleX;
 	calculatePoint();
-	radius = leftBottom.getY() - leftTop.getY();
-
-	printf("HO");
 }

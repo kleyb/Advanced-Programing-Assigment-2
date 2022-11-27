@@ -31,8 +31,8 @@ int main()
 {
 	string userCommand;
 	vector <Shape*> shapes;     // this one will hold your shapes
-	vector <string> parameters; // this one will hold parameters for the commands
-	int x, y, h,e, w, r ;
+	vector <string> parameters{}; // this one will hold parameters for the commands
+	int x{}, y{}, h{}, e{}, w{}, r{};
 
 	while (userCommand.compare("exit") != 0)
 	{
@@ -85,6 +85,7 @@ int main()
 								use cout << r which will give you additional points */
 			r->toString();
 			
+			
 		}
 		else if (command.compare("addS") == 0) {
 			// get parameters
@@ -98,7 +99,7 @@ int main()
 			s->toString();
 		}
 
-		if (command.compare("addC") == 0) {
+		else if (command.compare("addC") == 0) {
 			// get parameters
 			// ...
 			x = stoi(parameters[1]);
@@ -112,7 +113,7 @@ int main()
 		else if (command.compare("scale") == 0) {
 			// scale object at index... the scaling needs to be isotropic in case of circle and square 
 			// you may want to check if the index exists or not!
-			if (stoi(parameters[1]) == NULL) continue;
+			//if (stoi(parameters[1]) == NULL) continue;
 			int shapeNo = stoi(parameters[1]);
 			x = stoi(parameters[2]);
 			y = stoi(parameters[3]);
@@ -121,6 +122,7 @@ int main()
 			// You may need to use type casting wisely to use polymorphic functionality!
 			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo]);
 			m->scale(x, y);
+			shapes[shapeNo]->toString();
 		}
 		else if (command.compare("move") == 0) {
 			// move object at index 
@@ -148,11 +150,13 @@ int main()
 
 	//	// do any necessary postprocessing at the end of each loop...
 	//	// yes, there is some necessary postprocessing...
+
 	//	cout << endl << endl;
 	
-		
-		cout << "Press any key to continue...";
-		std::getchar();
+		parameters.clear();
+		userCommand = "";
+		//cout << "Press any key to continue...";
+		//std::getchar();
 	}
 		return 0;
 	

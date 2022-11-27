@@ -45,7 +45,7 @@ int Square::calculatePerimeter()
 void Square::toString()
 {
 	calculatePoint();
-	printf("Rectangle [E = %i]\n",edge);
+	printf("Square [E = %i]\n",edge);
 	printf("Points[(%i, %i)(%i, %i)(%i, %i)(%i, %i)]\n", leftTop.getX(), leftTop.getY(),
 		rightTop.getX(), rightTop.getY(), rightBottom.getX(), rightBottom.getY(), leftBottom.getX(), leftBottom.getY());
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
