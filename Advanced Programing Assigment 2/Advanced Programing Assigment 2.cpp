@@ -144,17 +144,26 @@ int main()
 			shapes[shapeNo - 1]->toString();
 
 		}
-	//	else if (command.compare("display") == 0) {
-	//		// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
-	//	}
+		else if (command.compare("display") == 0) {
+			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
+		
+			/*vector <Shape*>::iterator itr;
+			for (itr = shapes.begin(); itr != shapes.end(); itr++) {
+				
+			}*/
+			for (auto value : shapes )
+			{
+				value->toString();
+			}
+		}
 
-	//	// do any necessary postprocessing at the end of each loop...
-	//	// yes, there is some necessary postprocessing...
+		// do any necessary postprocessing at the end of each loop...
+		// yes, there is some necessary postprocessing...
 
-	//	cout << endl << endl;
+		cout << endl << endl;
 	
 		parameters.clear();
-		userCommand = "";
+		//userCommand = "";
 		cout << "Press any key to continue...";
 		std::getchar();
 	}
