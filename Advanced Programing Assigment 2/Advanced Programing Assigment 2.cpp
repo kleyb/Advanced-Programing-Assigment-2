@@ -126,7 +126,7 @@ int main()
 		}
 		else if (command.compare("move") == 0) {
 			// move object at index 
-			if (stoi(parameters[1]) == NULL) continue; 
+			if ((stoi(parameters[1])) > shapes.size()) continue;
 			
 			int shapeNo = stoi(parameters[1]);
 			
@@ -145,7 +145,7 @@ int main()
 
 		}
 		else if (command.compare("display") == 0) {
-			// this is not given in our example, but why don't you implement a display function which shows all objects stored in shapes?
+			if (shapes.empty()) continue;
 		
 			/*vector <Shape*>::iterator itr;
 			for (itr = shapes.begin(); itr != shapes.end(); itr++) {
@@ -156,12 +156,20 @@ int main()
 				value->toString();
 			}
 		}
+		else if (command.compare("clear") == 0)
+		{
+			for (auto value : shapes) {
+				free(value);
+				shapes.clear();
+				
+			}
+		}
 
 		// do any necessary postprocessing at the end of each loop...
 		// yes, there is some necessary postprocessing...
 
 		cout << endl << endl;
-	
+		
 		parameters.clear();
 		//userCommand = "";
 		cout << "Press any key to continue...";

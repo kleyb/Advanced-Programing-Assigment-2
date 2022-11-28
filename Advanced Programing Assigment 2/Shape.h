@@ -10,6 +10,7 @@ using namespace std;
 class Shape {
 public:
 	Shape();
+	~Shape();
 	virtual int calculateArea() = 0;
 	virtual int calculatePerimeter() = 0;
 	virtual void calculatePoint() = 0;
