@@ -11,6 +11,10 @@ Rectangle::Rectangle(int x, int y, int h, int w)
 	width = w;
 }
 
+Rectangle::~Rectangle()
+{
+}
+
 void Rectangle::calculatePoint()
 {
 	rightTop.setX(leftTop.getX()+width);

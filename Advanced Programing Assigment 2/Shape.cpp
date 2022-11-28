@@ -12,11 +12,12 @@ Shape::Shape()
 
 Shape::~Shape()
 {
-	delete &leftTop;
-	delete &rightBottom;
-	delete &leftBottom;
-	delete &rightTop;
-	delete& points;
+	delete[] & leftTop;
+	delete[] & rightBottom;
+	delete[] & leftBottom;
+	delete[] & rightTop;
+	delete[] & points;
+	
 }
 
 void Shape::toString() {

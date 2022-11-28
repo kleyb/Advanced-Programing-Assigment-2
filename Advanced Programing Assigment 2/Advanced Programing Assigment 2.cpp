@@ -100,8 +100,7 @@ int main()
 		}
 
 		else if (command.compare("addC") == 0) {
-			// get parameters
-			// ...
+
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
 			r = stoi(parameters[3]);
@@ -129,6 +128,8 @@ int main()
 			if ((stoi(parameters[1])) > shapes.size()) continue;
 			
 			int shapeNo = stoi(parameters[1]);
+			x = stoi(parameters[2]);
+			y = stoi(parameters[3]);
 			
 			 // read from parameters
 			// you may want to check if the index exists or not!
@@ -145,12 +146,11 @@ int main()
 
 		}
 		else if (command.compare("display") == 0) {
-			if (shapes.empty()) continue;
-		
-			/*vector <Shape*>::iterator itr;
-			for (itr = shapes.begin(); itr != shapes.end(); itr++) {
-				
-			}*/
+			if (shapes.empty())
+			{
+				parameters.clear();
+				continue;
+			}
 			for (auto value : shapes )
 			{
 				value->toString();
@@ -158,11 +158,16 @@ int main()
 		}
 		else if (command.compare("clear") == 0)
 		{
-			for (auto value : shapes) {
-				free(value);
-				shapes.clear();
-				
-			}
+			shapes.clear();
+			
+			//shapes =vector <Shape*>();
+			vector<Shape*>().swap(shapes);
+			//shapes.shrink_to_fit(); // Dealocates the memory , by reducing the size of array , equivalent to swapping 
+		}
+		else if(command.compare("exit") == 0) continue; // Makes sure the game ends when the exit command is entered 
+		else 
+		{
+			cout << "You have entered an invalid value, please try again\n ";
 		}
 
 		// do any necessary postprocessing at the end of each loop...
