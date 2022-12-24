@@ -35,52 +35,47 @@ int main()
 	int x{}, y{}, h{}, e{}, w{}, r{};
 
 	while (userCommand.compare("exit") != 0)
-	{
+	{	
+		//Makes sure paramters is always cleaned before going through the loop 
+		parameters.clear();
 		cout << "Enter the command: ";
 
-		getline(cin, userCommand);
-
-		char* cstr = new char[userCommand.length() + 1];
-
+		getline(cin, userCommand); // get the user input
+		char* cstr = new char[userCommand.length() + 1];//Created a c string of the size of user command 
 		strcpy_s(cstr, userCommand.length() + 1, userCommand.c_str()); // Copies the string and sends to a specific destination
 
-		// implement a string tokenizer to populate the parameters vector 
-		// check function strtok_s
-
+		//The following code uses a string tokenizer ( strtok_s) to extract every char from the char string
+		//it adds every char togher until it finds a space (" ") ,when it starts a new parameter. 
+		//It adds all parameters into the 'parameters' vector
 		char* next_token = NULL;
 		string paramter_s;
 		char* parameter = strtok_s(cstr, " ", &next_token);
-
 		while (parameter != NULL) {
-			//cut << parameter << endl;
 			paramter_s = parameter;
 			parameters.push_back(paramter_s);
 			parameter = strtok_s(NULL, " ", &next_token);
-
 		}
-		//Checks if the vector is empty before contining , preventing errors in case an empty or white space is entered
+		//Checks if the vector is empty before continuing, preventing errors in case an empty or white space are entered
 		if ( parameters.empty()) continue;
 		
-		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
+		//The first index of parameters holds the user command
 		string command = parameters[0];
 
-
-		// in the following code, consider checking for the arguments.
-		// in case of too few arguments, you may remind the user the correct format
-
+		//Uses the 'compare' method to compare the user command, it returns a 1 if false , 0 if true 
 		if (command.compare("addR") == 0) {
-			// get parameters in the correct order
-			// The following four lines have a type mismatch error
-			// note that the the parameters vector contains ascii values
-			// HINT: stoi function converts from string to int
-
-			x = stoi(parameters[1]); // fix me! also note that x is not previously defined :(
+			//Checks wether the user enter the correct number of parameters , if not goes back to the beginning of the loop
+			if (parameters.size() !=5) {
+				cout << "You have entered too few/many commands!\n ";
+				continue;
+			}
+			//Gets all the parameters from the vector and convert them into 'Int'
+			x = stoi(parameters[1]); 
 			y = stoi(parameters[2]);
 			h = stoi(parameters[3]);
 			w = stoi(parameters[4]);
-
-
+			// Create a instance of the Rectangle obj
 			Rectangle* r = new Rectangle(x, y, h, w);
+			//Pushes the new obj into the shapes vector
 			shapes.push_back(r);
 			
 			//Overloaded stream extration operator , 
@@ -88,95 +83,102 @@ int main()
 			cout << *r << endl;
 			
 		}
-		else if (command.compare("addS") == 0) {
+		else if (command.compare("addS") == 0) // compares the user command 
+		{
+			if (parameters.size() != 4) // Checks wether the user entered the right number of parameters
+			{	// if not displayes a message and returns to the beginning of loop
+				cout << "You have entered too few/many commands!\n ";
+				continue;
+			}
+			//Gets the parameters
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
 			e = stoi(parameters[3]);
-			Square* s = new Square(x, y, e);
+
+			Square* s = new Square(x, y, e);// new instance of Square obj is created
 			shapes.push_back(s);
 			//Overloaded stream extration operator 
 			cout << *s << endl;
 		}
 
-		else if (command.compare("addC") == 0) {
-
+		else if (command.compare("addC") == 0) // Compares the user command
+		{
+			if (parameters.size() != 4) // checks if user entered the right number of parameters
+			{	//if not displays message and returns to the beginning of loop
+				cout << "You have entered too few/many commands!\n ";
+				continue;
+			}
+			//gets the parameters 
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
 			r = stoi(parameters[3]);
-			Circle* c = new Circle(x, y, r);
+			Circle* c = new Circle(x, y, r); // new instance of Cicle is created
 			shapes.push_back(c);
 			//Overloaded stream extration operator 
 			cout << *c << endl;
+			
 		}
 		else if (command.compare("scale") == 0) {
-			// scale object at index... the scaling needs to be isotropic in case of circle and square 
-			// you may want to check if the index exists or not!
+			// scale object at index
+			// if shape is isotropic , only 'x' is taken into account
+			if ((stoi(parameters[1])) > shapes.size()) cout << "The shape you have selected doens't exist" << endl; continue;
 			int shapeNo = stoi(parameters[1]);
 			x = stoi(parameters[2]);
 			y = stoi(parameters[3]);
-			// Multiple inhertitance is tricky! The Shape class does nto have a scale function, the Movable does!
-			// As a result all your derived classes have scale functions... 
-			// You may need to use type casting wisely to use polymorphic functionality!
+			// creates a pointer to a derived class obj of movable, and uses it to scale 
 			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo]);
 			m->scale(x, y);
-
+			//uses the operator overloading to display the new position
 			cout << *shapes[shapeNo] << endl;
+			
 		}
 		else if (command.compare("move") == 0) {
-			// move object at index 
-			if ((stoi(parameters[1])) > shapes.size()) continue;
+			if ((stoi(parameters[1])) > shapes.size()) // checks if the selected shape to scale exist
+			{	// if shape doesn't exists ,displays message and continue loop
+				cout << "The shape you have selected doens't exist" << endl; 
+				continue;
+			}
 			
+			// move object at index 
 			int shapeNo = stoi(parameters[1]);
 			x = stoi(parameters[2]);
 			y = stoi(parameters[3]);
-			
-			 // read from parameters
-			// you may want to check if the index exists or not!
 
-			// Study the following code. A Shape object is not Movable, but all derived classes are...
-			// you can't automatically type cast from a Shape to a Movable, but you can force a downcasting
+			//uses dynamic cast to create a point from base class into a deverived class obj
 			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo - 1]);
 			m->move(x, y);
-			// scale should work similarly...
-
-			// note that here you should see the corresponding toString output for the derived classes...
-			// if toString is not a virtual function, you may see the base class functionality :(
-			
+			//uses overloaded operator
 			cout << *shapes[shapeNo - 1] << endl;
-
 		}
-		else if (command.compare("display") == 0) {
-			if (shapes.empty())
-			{
+		else if (command.compare("display") == 0) // uses the compare method to check the user command
+		{
+			if (shapes.empty()) // Check if the shapes vector is empty , it is then it's not possible to display
+			{	// if there are no shapes , display message and display
+				cout << "The are no shapes to be displayed\n ";
 				parameters.clear();
 				continue;
 			}
-			for (auto value : shapes )
+			for (auto value : shapes ) //use for each loop to interate through the vector and display the value
 			{
 				cout << *value << endl;
 			}
 		}
-		else if (command.compare("clear") == 0)
-		{
+		else if (command.compare("clear") == 0) // uses compare method to check the user command
+		{	//Clears the shape vector
 			shapes.clear();
 			
 			//shapes =vector <Shape*>();
-			vector<Shape*>().swap(shapes);
-			//shapes.shrink_to_fit(); // Dealocates the memory , by reducing the size of array , equivalent to swapping 
+			//vector<Shape*>().swap(shapes);
+			shapes.shrink_to_fit(); // Dealocates the memory ,by reducing the size of array ,equivalent to swapping 
 		}
 		else if(command.compare("exit") == 0) continue; // Makes sure the game ends when the exit command is entered 
-		else 
+		else // if no valid command is entered then displays message 
 		{
 			cout << "You have entered an invalid value, please try again\n ";
 		}
-
-		// do any necessary postprocessing at the end of each loop...
-		// yes, there is some necessary postprocessing...
-
+		
 		cout << endl << endl;
 		
-		parameters.clear();
-		//userCommand = "";
 		cout << "Press any key to continue...";
 		std::getchar();
 	}
