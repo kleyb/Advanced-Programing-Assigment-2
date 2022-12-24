@@ -119,7 +119,8 @@ int main()
 			// You may need to use type casting wisely to use polymorphic functionality!
 			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo]);
 			m->scale(x, y);
-			shapes[shapeNo]->toString();
+
+			cout << *shapes[shapeNo] << endl;
 		}
 		else if (command.compare("move") == 0) {
 			// move object at index 
@@ -140,7 +141,8 @@ int main()
 
 			// note that here you should see the corresponding toString output for the derived classes...
 			// if toString is not a virtual function, you may see the base class functionality :(
-			shapes[shapeNo - 1]->toString();
+			
+			cout << *shapes[shapeNo - 1] << endl;
 
 		}
 		else if (command.compare("display") == 0) {
@@ -151,7 +153,7 @@ int main()
 			}
 			for (auto value : shapes )
 			{
-				value->toString();
+				cout << *value << endl;
 			}
 		}
 		else if (command.compare("clear") == 0)
