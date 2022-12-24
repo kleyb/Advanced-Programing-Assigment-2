@@ -10,8 +10,12 @@ Circle::Circle(int x, int y, double r)
 
 void Circle::calculatePoint()
 {
+	points.clear();
 	rightBottom.setX(round(leftTop.getX() + 2 * radius));
 	rightBottom.setY(round(leftTop.getY() + 2 * radius));
+
+	points.push_back(leftTop);
+	points.push_back(rightBottom);
 }
 
 void Circle::calculatePoint(int newX, int newY)
@@ -22,13 +26,14 @@ void Circle::calculatePoint(int newX, int newY)
 	calculatePoint();
 }
 
-int Circle::calculateArea()
+int Circle::calculateArea() //Needs to be checked
 {
 	int temp = round(pi * radius * radius);
 	return temp; // returns version of the result 
 }
 
-int Circle::calculatePerimeter() {
+int Circle::calculatePerimeter() //Needs to be checked
+{
 	return round(2 * pi * radius);
 }
 
@@ -42,7 +47,14 @@ void Circle::toString()
 {
 	calculatePoint();
 	printf("Circle [R = %f]\n", radius);
-	printf("Points[(%i, %i)(%i, %i)]\n", leftTop.getX(), leftTop.getY(), rightBottom.getX(), rightBottom.getY());
+
+	printf("Points ");
+	for (Points point : points)
+	{
+		printf("[(%i,%i)]", point.getX(), point.getY());
+
+	}
+	printf("\n");
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 }
 // Scales the circle based on the first value given

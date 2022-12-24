@@ -21,5 +21,5 @@ public:
 	Points rightTop;
 	bool isCircular = false;
 	vector<Points> points;
-	
+	friend std::ostream& operator<<(std::ostream& os, Shape& object);
 };

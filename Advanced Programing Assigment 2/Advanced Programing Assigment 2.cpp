@@ -29,7 +29,7 @@ using namespace std;
 
 int main()
 {
-	string userCommand;
+	string userCommand = "";
 	vector <Shape*> shapes;     // this one will hold your shapes
 	vector <string> parameters{}; // this one will hold parameters for the commands
 	int x{}, y{}, h{}, e{}, w{}, r{};
@@ -58,7 +58,9 @@ int main()
 			parameter = strtok_s(NULL, " ", &next_token);
 
 		}
-
+		//Checks if the vector is empty before contining , preventing errors in case an empty or white space is entered
+		if ( parameters.empty()) continue;
+		
 		// as a result of the process, parameters[0] should hold your command, followed by your parameters 
 		string command = parameters[0];
 
@@ -80,23 +82,20 @@ int main()
 
 			Rectangle* r = new Rectangle(x, y, h, w);
 			shapes.push_back(r);
-			//cout << r->toString(); 
-				/* instead of this, you may implement operator overloadig and
-								use cout << r which will give you additional points */
-			r->toString();
 			
+			//Overloaded stream extration operator , 
+			//mofied into accesseing a non-constant obj in order to access it's methods in addition to properties
+			cout << *r << endl;
 			
 		}
 		else if (command.compare("addS") == 0) {
-			// get parameters
-			// ...
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
 			e = stoi(parameters[3]);
 			Square* s = new Square(x, y, e);
 			shapes.push_back(s);
-			//cout << s->toString();
-			s->toString();
+			//Overloaded stream extration operator 
+			cout << *s << endl;
 		}
 
 		else if (command.compare("addC") == 0) {
@@ -106,13 +105,12 @@ int main()
 			r = stoi(parameters[3]);
 			Circle* c = new Circle(x, y, r);
 			shapes.push_back(c);
-			//cout << c->toString();
-			c->toString();
+			//Overloaded stream extration operator 
+			cout << *c << endl;
 		}
 		else if (command.compare("scale") == 0) {
 			// scale object at index... the scaling needs to be isotropic in case of circle and square 
 			// you may want to check if the index exists or not!
-			//if (stoi(parameters[1]) == NULL) continue;
 			int shapeNo = stoi(parameters[1]);
 			x = stoi(parameters[2]);
 			y = stoi(parameters[3]);

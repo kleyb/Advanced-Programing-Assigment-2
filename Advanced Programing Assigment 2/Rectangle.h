@@ -13,7 +13,7 @@ public:
 	int calculateArea();
 	int calculatePerimeter();
 	void toString();
-	void virtual scale(float scaleX, float scaleY);
+	void virtual scale(float scaleX, float scaleY);	
 private:
 	int height{};
 	int width{};

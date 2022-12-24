@@ -24,4 +24,9 @@ void Shape::toString() {
 	cout << "Shape Details\n";
 }
 
-
+std::ostream& operator<<(std::ostream& os, Shape& object)
+{
+	object.calculatePoint();
+	object.toString();
+	return os;
+}

@@ -9,6 +9,7 @@ Square::Square(int x, int y, int e)
 
 void Square::calculatePoint()
 {
+	points.clear();
 	rightTop.setX(leftTop.getX() + edge);
 	rightTop.setY(leftTop.getY());
 
@@ -17,6 +18,12 @@ void Square::calculatePoint()
 
 	leftBottom.setX(leftTop.getX());
 	leftBottom.setY(leftTop.getY() + edge);
+
+	points.push_back(leftTop);
+	points.push_back(rightTop);
+	points.push_back(rightBottom);
+	points.push_back(leftBottom);
+
 }
 
 void Square::calculatePoint(int newX, int newY)
@@ -46,8 +53,13 @@ void Square::toString()
 {
 	calculatePoint();
 	printf("Square [E = %i]\n",edge);
-	printf("Points[(%i, %i)(%i, %i)(%i, %i)(%i, %i)]\n", leftTop.getX(), leftTop.getY(),
-		rightTop.getX(), rightTop.getY(), rightBottom.getX(), rightBottom.getY(), leftBottom.getX(), leftBottom.getY());
+	printf("Points ");
+	for (Points point : points)
+	{
+		printf("[(%i,%i)]", point.getX(), point.getY());
+
+	}
+	printf("\n");	
 	printf("Area= %d Perimeter=%d \n", calculateArea(), calculatePerimeter());
 }
 
