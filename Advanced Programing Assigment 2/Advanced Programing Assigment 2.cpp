@@ -122,7 +122,12 @@ int main()
 		else if (command.compare("scale") == 0) {
 			// scale object at index
 			// if shape is isotropic , only 'x' is taken into account
-			if ((stoi(parameters[1])) > shapes.size()) cout << "The shape you have selected doens't exist" << endl; continue;
+			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < shapes.size()) {
+				cout << "The shape you have selected doens't exist" << endl; continue;
+			}
+			else if (parameters.size() > 3) {
+				cout << "You have entered too many parameters\n";
+			}
 			int shapeNo = stoi(parameters[1]);
 			x = stoi(parameters[2]);
 			y = stoi(parameters[3]);
@@ -134,10 +139,14 @@ int main()
 			
 		}
 		else if (command.compare("move") == 0) {
-			if ((stoi(parameters[1])) > shapes.size()) // checks if the selected shape to scale exist
-			{	// if shape doesn't exists ,displays message and continue loop
+			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < shapes.size()) {
+				// checks if the selected shape to scale exist
+				// if shape doesn't exists ,displays message and continue loop
 				cout << "The shape you have selected doens't exist" << endl; 
 				continue;
+			}
+			else if (parameters.size() > 3) {
+				cout << "You have entered too many parameters\n";
 			}
 			
 			// move object at index 
