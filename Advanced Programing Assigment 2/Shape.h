@@ -20,6 +20,6 @@ public:
 	Points leftBottom;
 	Points rightTop;
 	bool isCircular = false;
-	vector<Points> points;
-	friend std::ostream& operator<<(std::ostream& os, Shape& object);
+	vector<Points> points; //Holds the points
+	friend std::ostream& operator<<(std::ostream& os, Shape& object); //Friend function to overload the stream operator
 };

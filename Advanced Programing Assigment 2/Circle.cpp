@@ -1,10 +1,10 @@
 
 #include "Circle.h"
-Circle::Circle(int x, int y, double r)
+Circle::Circle(int *x, int *y, float r)
 {
 	radius = r;
-	leftTop.setX(x);
-	leftTop.setY(y);
+	leftTop.setX(*x);
+	leftTop.setY(*y);
 	isCircular = true;
 }
 
@@ -18,10 +18,10 @@ void Circle::calculatePoint()
 	points.push_back(rightBottom);
 }
 
-void Circle::calculatePoint(int newX, int newY)
+void Circle::calculatePoint(int *newX, int *newY)
 {
-	leftTop.setX(newX);
-	leftTop.setY(newY);
+	leftTop.setX(*newX);
+	leftTop.setY(*newY);
 
 	calculatePoint();
 }
@@ -37,10 +37,13 @@ int Circle::calculatePerimeter() //Needs to be checked
 	return round(2 * pi * radius);
 }
 
-void Circle::move(int newX, int newY)
+void Circle::move(int &newX, int &newY)
 {
-	if (newX < 0 || newY < 0) printf("You have entered invalid cordinates, please enter values above or equal to 0"); return;
-	calculatePoint(newX, newY);
+	if (newX < 0 || newY < 0) {
+		printf("You have entered invalid cordinates, please enter values above or equal to 0");
+		return;
+	}
+	calculatePoint(&newX, &newY);
 }
 
 void Circle::toString()

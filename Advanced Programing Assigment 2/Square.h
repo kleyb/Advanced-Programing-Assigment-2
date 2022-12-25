@@ -3,10 +3,10 @@
 #include"Shape.h"
 class Square : public Shape, public Movable {
 public:
-	Square(int x ,int y,int e);
+	Square(int *x ,int *y,int *e);
 	void calculatePoint();
-	void calculatePoint(int newX, int newY);
-	void move(int newX, int newY);
+	void calculatePoint(int *newX, int *newY);
+	void move(int &newX, int &newY);
 	int calculateArea();
 	int calculatePerimeter();
 	void toString();

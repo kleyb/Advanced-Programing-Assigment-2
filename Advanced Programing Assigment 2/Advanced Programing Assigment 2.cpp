@@ -74,7 +74,7 @@ int main()
 			h = stoi(parameters[3]);
 			w = stoi(parameters[4]);
 			// Create a instance of the Rectangle obj
-			Rectangle* r = new Rectangle(x, y, h, w);
+			Rectangle* r = new Rectangle(&x, &y, &h, &w);
 			//Pushes the new obj into the shapes vector
 			shapes.push_back(r);
 			
@@ -95,7 +95,7 @@ int main()
 			y = stoi(parameters[2]);
 			e = stoi(parameters[3]);
 
-			Square* s = new Square(x, y, e);// new instance of Square obj is created
+			Square* s = new Square(&x, &y, &e);// new instance of Square obj is created
 			shapes.push_back(s);
 			//Overloaded stream extration operator 
 			cout << *s << endl;
@@ -111,8 +111,9 @@ int main()
 			//gets the parameters 
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
-			r = stoi(parameters[3]);
-			Circle* c = new Circle(x, y, r); // new instance of Cicle is created
+			r = stof(parameters[3]);
+		
+			Circle* c = new Circle(&x,&y,r); // new instance of Cicle is created
 			shapes.push_back(c);
 			//Overloaded stream extration operator 
 			cout << *c << endl;

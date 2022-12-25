@@ -13,7 +13,7 @@ int Points::getY()
 Points::Points()
 {
 	x = 0;
-	x = 0;
+	y = 0;
 }
 
 void Points::setX(float x)

@@ -3,16 +3,18 @@
 #include"Points.h"
 #include <format>
 
-Rectangle::Rectangle(int x, int y, int h, int w)
+Rectangle::Rectangle(int *x, int *y, int *h, int *w)
 {
-	leftTop.setX(x);
-	leftTop.setY(y);
-	height = h;
-	width = w;
+	leftTop.setX(*x);
+	leftTop.setY(*y);
+	height = *h;
+	width = *w;
+
 }
 
 Rectangle::~Rectangle()
 {
+	
 }
 
 void Rectangle::calculatePoint()
@@ -34,17 +36,17 @@ void Rectangle::calculatePoint()
 	
 }
 
-void Rectangle::calculatePoint(int newX, int newY)
+void Rectangle::calculatePoint(int *newX, int *newY)
 {
-	leftTop.setX(newX);
-	leftTop.setY(newY);
+	leftTop.setX(*newX);
+	leftTop.setY(*newY);
 
 	calculatePoint();
 }
 
-void Rectangle::move(int newX, int newY)
+void Rectangle::move(int &newX, int &newY)
 {
-	calculatePoint(newX, newY);
+	calculatePoint(&newX, &newY);
 }
 
 int Rectangle::calculateArea()

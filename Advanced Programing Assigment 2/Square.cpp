@@ -1,10 +1,10 @@
 #include "Square.h"
 
-Square::Square(int x, int y, int e)
+Square::Square(int *x, int *y, int *e)
 {
-	leftTop.setX(x);
-	leftTop.setY(y);
-	edge = e;
+	leftTop.setX(*x);
+	leftTop.setY(*y);
+	edge = *e;
 }
 
 void Square::calculatePoint()
@@ -26,17 +26,17 @@ void Square::calculatePoint()
 
 }
 
-void Square::calculatePoint(int newX, int newY)
+void Square::calculatePoint(int *newX, int *newY)
 {
-	leftTop.setX(newX);
-	leftTop.setY(newY);
+	leftTop.setX(*newX);
+	leftTop.setY(*newY);
 
 	calculatePoint();
 }
 
-void Square::move(int newX, int newY)
+void Square::move(int &newX, int &newY)
 {
-	calculatePoint(newX, newY);
+	calculatePoint(&newX, &newY);
 }
 
 int Square::calculateArea()
