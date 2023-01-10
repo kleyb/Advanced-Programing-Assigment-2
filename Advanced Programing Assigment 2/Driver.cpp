@@ -21,12 +21,28 @@ GOOD LUCK!
 #include "Rectangle.h"
 #include "Square.h"
 #include "Movable.h"
+#include"CompareT.h"
 
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <algorithm> // Use Algorithm STL for lambda expression 
+#include "Driver.h"
 
 using namespace std;
+
+void commandsMenu()
+{	// Dispplays all the commands and the format they must be entered 
+	cout << "Please note the commands available to you and remember to enter in the correct format:\n";
+	cout << "For Rectangle:  addR <x_coordinate_leftTopPoint> <y_coordinate_leftTopPoint> <height> <width>\n";
+	cout << "For Square:	addS <x_coordinate_leftTopPoint> <y_coordinate_leftTopPoint> <edge_length>\n";
+	cout << "For Circle:	addC <x_coordinate_leftTopPoint> <y_coordinate_leftTopPoint> <radius>\n";
+	cout << "For Moving:	move <shape_index> <x_coordinate_newLeftTopPoint> <y_coordinate_newLeftTopPoint>\n";
+	cout << "For Scaling:	scale <shape_index> <x_scale_amount> <y_scale_amount>\n";
+	cout << "For Displaying: display\n";
+	cout << "For Clearing:   clear\n";
+	cout << "For Comparing Area Size: compare <shape1_index> <shape2_index> \n";
+	cout << "To Exit:	exit\n";
+}
 
 int main()
 {
@@ -35,11 +51,14 @@ int main()
 	vector <string> parameters{}; // this one will hold parameters for the commands
 	int x{}, y{}, h{}, e{}, w{}, r{};
 
+	cout << "Welcome to Shapes Handler\n";
+	
+	// While use doesnt enter the command 'exit' keeps running the program
 	while (userCommand.compare("exit") != 0)
-	{	
+	{			
 		//Makes sure paramters is always cleaned before going through the loop 
 		parameters.clear();
-		cout << "Enter the command: ";
+		cout << "Please,enter your command or type in menu to display the Menu: ";
 
 		getline(cin, userCommand); // get the user input
 		char* cstr = new char[userCommand.length() + 1];//Created a c string of the size of user command 
@@ -169,10 +188,6 @@ int main()
 				parameters.clear();
 				continue;
 			}
-			//for (auto value : shapes ) //use for each loop to interate through the vector and display the value
-			//{
-			//	cout << *value << endl;
-			//}
 
 			//Lambda Function to iterate and display all shapes in the vector
 			// the function is assigned into the variable called displayValues
@@ -193,14 +208,23 @@ int main()
 			shapes.shrink_to_fit(); // Dealocates the memory ,by reducing the size of array ,equivalent to swapping 
 		}
 		else if(command.compare("exit") == 0) continue; // Makes sure the game ends when the exit command is entered 
+		else if ( command.compare("compare") == 0) {
+			compareT<Shape*> shapeM(shapes[0], shapes[1]);
+			
+			shapeM.comparing();
+		}
+		else if (command.compare("menu") == 0) {
+			//Displays the menu to the user
+			commandsMenu();
+		}
 		else // if no valid command is entered then displays message 
 		{
-			cout << "You have entered an invalid value, please try again\n ";
+			cout << "You have entered an invalid command, please try again\n ";
 		}
 		
 		cout << endl << endl;
 		
-		cout << "Press any key to continue...";
+		cout << "Press any key to continue...\n";
 		std::getchar();
 	}
 		return 0;

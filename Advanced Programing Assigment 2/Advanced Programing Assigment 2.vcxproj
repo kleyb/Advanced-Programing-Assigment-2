@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Advanced Programing Assigment 2.cpp" />
+    <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Movable.cpp" />
     <ClCompile Include="Points.cpp" />
@@ -137,6 +137,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="CompareT.h" />
+    <ClInclude Include="Driver.h" />
     <ClInclude Include="Movable.h" />
     <ClInclude Include="Points.h" />
     <ClInclude Include="Rectangle.h" />

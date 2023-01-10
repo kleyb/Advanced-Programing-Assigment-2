@@ -4,6 +4,7 @@
 #include<string>
 #include<vector>
 #include"Points.h"
+#include"CompareT.h"
 
 using namespace std;
 
@@ -22,4 +23,6 @@ public:
 	bool isCircular = false;
 	vector<Points> points; //Holds the points
 	friend std::ostream& operator<<(std::ostream& os, Shape& object); //Friend function to overload the stream operator
+	template<class T> friend class compareT;
+
 };
