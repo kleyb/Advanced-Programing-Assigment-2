@@ -209,7 +209,22 @@ int main()
 		}
 		else if(command.compare("exit") == 0) continue; // Makes sure the game ends when the exit command is entered 
 		else if ( command.compare("compare") == 0) {
-			compareT<Shape*> shapeM(shapes[0], shapes[1]);
+			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < shapes.size()) {
+				// checks if the selected shape to scale exist
+				// if shape doesn't exists ,displays message and continue loop
+				cout << "The shape you have selected doens't exist" << endl;
+				continue;
+			}
+			else if (stoi(parameters[2]) > shapes.size() || (stoi(parameters[2])) < shapes.size()) {
+				// checks if the selected shape to scale exist
+				// if shape doesn't exists ,displays message and continue loop
+				cout << "The shape you have selected doens't exist" << endl;
+				continue;
+			}
+
+			x = stoi(parameters[1]);
+			y = stoi(parameters[2]);
+			compareT<Shape*> shapeM(shapes[x], shapes[y]);
 			
 			shapeM.comparing();
 		}

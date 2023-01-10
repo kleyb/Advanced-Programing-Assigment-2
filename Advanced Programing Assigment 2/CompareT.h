@@ -11,7 +11,7 @@ public:
 	};
 	void comparing()
 	{
-		std::cout << "The Shape with the Biggest area is: ";
+		std::cout << "The Shape with the Biggest area is:\n ";
 
 		if (a->calculateArea() > b->calculateArea()) {
 			 a->toString();
