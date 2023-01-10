@@ -24,6 +24,7 @@ GOOD LUCK!
 
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -168,10 +169,20 @@ int main()
 				parameters.clear();
 				continue;
 			}
-			for (auto value : shapes ) //use for each loop to interate through the vector and display the value
-			{
-				cout << *value << endl;
-			}
+			//for (auto value : shapes ) //use for each loop to interate through the vector and display the value
+			//{
+			//	cout << *value << endl;
+			//}
+
+			//Lambda Function to iterate and display all shapes in the vector
+			// the function is assigned into the variable called displayValues
+			auto displayValues = [](auto shapesVec) {
+				for_each(shapesVec.begin(), shapesVec.end(),
+					[](auto i) { cout << *i << endl; }
+				);
+			};
+			// Calls function to display shapes
+			displayValues(shapes);
 		}
 		else if (command.compare("clear") == 0) // uses compare method to check the user command
 		{	//Clears the shape vector
