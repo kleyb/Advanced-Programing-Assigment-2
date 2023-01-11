@@ -39,7 +39,7 @@ void commandsMenu()
 	cout << "For Scaling:	scale <shape_index> <x_scale_amount> <y_scale_amount>\n";
 	cout << "For Displaying: display\n";
 	cout << "For Clearing:   clear\n";
-	cout << "For Comparing Area Size: compare <shape1_index> <shape2_index> \n";
+	cout << "For Comparing Area Sizes: compare <shape1_index> <shape2_index> \n";
 	cout << "To Exit:	exit\n";
 }
 
@@ -84,7 +84,7 @@ int main()
 		if (command.compare("addR") == 0) {
 			//Checks wether the user enter the correct number of parameters , if not goes back to the beginning of the loop
 			if (parameters.size() !=5) {
-				cout << "You have entered too few/many commands!\n ";
+				cout << "You have entered too few/many commands!\n";
 				continue;
 			}
 			//Gets all the parameters from the vector and convert them into 'Int'
@@ -99,15 +99,14 @@ int main()
 			
 			//Overloaded stream extration operator , 
 			//mofied into accesseing a non-constant obj in order to access it's methods in addition to properties
-			cout << *r << endl;
-			
+			cout << *r << endl;			
 			
 		}
 		else if (command.compare("addS") == 0) // compares the user command 
 		{
 			if (parameters.size() != 4) // Checks wether the user entered the right number of parameters
 			{	// if not displayes a message and returns to the beginning of loop
-				cout << "You have entered too few/many commands!\n ";
+				cout << "You have entered too few/many commands!\n";
 				continue;
 			}
 			//Gets the parameters
@@ -120,12 +119,11 @@ int main()
 			//Overloaded stream extration operator 
 			cout << *s << endl;
 		}
-
 		else if (command.compare("addC") == 0) // Compares the user command
 		{
 			if (parameters.size() != 4) // checks if user entered the right number of parameters
 			{	//if not displays message and returns to the beginning of loop
-				cout << "You have entered too few/many commands!\n ";
+				cout << "You have entered too few/many commands!\n";
 				continue;
 			}
 			//gets the parameters 
@@ -139,8 +137,7 @@ int main()
 			cout << *c << endl;
 			
 		}
-		else if (command.compare("scale") == 0) {
-			
+		else if (command.compare("scale") == 0) {			
 			if (shapes.empty()) {
 				cout << "There are no shapes to be scaled\n";
 				continue;
@@ -152,8 +149,7 @@ int main()
 			else if (parameters.size() != 4 || parameters.size() == 1) {
 				cout << "You have entered too many/little parameters\n";
 				continue;
-			}
-			
+			}			
 			int shapeNo = stoi(parameters[1]);
 			x = stoi(parameters[2]);
 			y = stoi(parameters[3]);
@@ -161,11 +157,10 @@ int main()
 			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo-1]);
 			m->scale(x, y);
 			//uses the operator overloading to display the new position
-			cout << *shapes[shapeNo-1] << endl;
-			
+			cout << *shapes[shapeNo-1] << endl;			
 		}
 		else if (command.compare("move") == 0) {
-			if (shapes.empty()) {
+			if (shapes.empty()) { // checks if there are qany shapes to be moved 
 				cout << "There are no shapes to be moved\n";
 				continue;
 			}			
@@ -193,13 +188,11 @@ int main()
 		}
 		else if (command.compare("display") == 0) // uses the compare method to check the user command
 		{
-			if (shapes.empty()) // Check if the shapes vector is empty , it is then it's not possible to display
+			if (shapes.empty()) // Check if the shapes vector is empty , if is then it's not possible to display
 			{	// if there are no shapes , display message and display
-				cout << "The are no shapes to be displayed\n ";
-				parameters.clear();
+				cout << "The are no shapes to be displayed\n";
 				continue;
 			}
-
 			//Lambda Function to iterate and display all shapes in the vector
 			// the function is assigned into the variable called displayValues
 			auto displayValues = [](auto shapesVec) {
@@ -211,13 +204,18 @@ int main()
 			displayValues(shapes);
 		}
 		else if (command.compare("clear") == 0) // uses compare method to check the user command
-		{	//Clears the shape vector
-			shapes.clear();
+		{	
+			shapes.clear();//Clears the shape vector
 			shapes.shrink_to_fit(); // Dealocates the memory from heap ,by reducing the size of array ,equivalent to swapping 			
 		}
 		else if(command.compare("exit") == 0) continue; // Makes sure the game ends when the exit command is entered 
-		else if ( command.compare("compare") == 0) {
-			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < 1) {
+		else if ( command.compare("compare") == 0) {			
+			if (shapes.empty()) // Check if the shapes vector is empty , if it is then it's not possible to compare
+			{
+				cout << "The are no shapes to be compared\n";
+				continue;
+			}
+			else if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < 1) {
 				// checks if the selected shape to scale exist
 				// if shape doesn't exists ,displays message and continue loop
 				cout << "The shape you have selected doens't exist" << endl;
@@ -229,11 +227,16 @@ int main()
 				cout << "The shape you have selected doens't exist" << endl;
 				continue;
 			}
+			else if (parameters.size() != 3 || parameters.size() == 1) {
+				//checks if the user entered too many/liitle parameters 
+				cout << "You have entered too many/little parameters\n";
+				continue;
+			}
 
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
+			// Uses a template to compare 2 shapes given by the user
 			compareT<Shape*> shapeM(shapes[x-1], shapes[y-1]);
-			
 			shapeM.comparing();
 		}
 		else if (command.compare("menu") == 0) {
@@ -242,7 +245,7 @@ int main()
 		}
 		else // if no valid command is entered then displays message 
 		{
-			cout << "You have entered an invalid command, please try again\n ";
+			cout << "You have entered an invalid command, please try again\n";
 		}
 		cout << endl << endl;
 		

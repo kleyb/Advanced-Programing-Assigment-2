@@ -6,6 +6,11 @@ Square::Square(int *x, int *y, int *e)
 	leftTop.setY(*y);
 	edge = *e;	
 }
+Square::~Square()
+{
+	points.clear();
+	points.shrink_to_fit();
+}
 //Clears the points vector then calculates the points positions
 void Square::calculatePoint()
 {

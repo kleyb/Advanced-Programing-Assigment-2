@@ -5,6 +5,7 @@
 class Square : public Shape, public Movable {
 public:
 	Square(int *x ,int *y,int *e); // Square Constructor will assign values into positions x and y of left , as well as the value of edge 
+	~Square();
 	void calculatePoint(); // Method to calculate points
 	int calculateArea();
 	int calculatePerimeter();

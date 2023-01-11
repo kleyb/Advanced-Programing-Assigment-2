@@ -8,6 +8,10 @@ Circle::Circle(int *x, int *y, float r)
 	leftTop.setY(*y);
 	isCircular = true;
 }
+Circle::~Circle() {
+	points.clear();
+	points.shrink_to_fit();
+}
 //Calculates the positions of every point
 void Circle::calculatePoint()
 {	//Clears the vector before adding the points

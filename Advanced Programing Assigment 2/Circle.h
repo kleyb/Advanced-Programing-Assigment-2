@@ -7,6 +7,7 @@ class Circle : public Shape ,public  Movable
 {
 public:	
 	Circle(int *x, int *y, float r); // The constructor uses pointers for positions x ,y but not for radius 
+	~Circle();
 	void calculatePoint();
 	void calculatePoint(int *newX, int *newY);
 	int calculateArea();

@@ -6,7 +6,7 @@
 //Uses pointers to set the pointers and values to height and width
 Rectangle::Rectangle(int *x, int *y, int *h, int *w)
 {
-	leftTop.setX(*x);
+	leftTop.setX(*x); 
 	leftTop.setY(*y);
 	height = *h;
 	width = *w;
@@ -16,7 +16,6 @@ Rectangle::~Rectangle()
 {
 	points.clear();
 	points.shrink_to_fit();
-
 }
 //Calculates the points positions
 void Rectangle::calculatePoint()
