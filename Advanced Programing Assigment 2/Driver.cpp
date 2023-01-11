@@ -39,7 +39,7 @@ void commandsMenu()
 	cout << "For Scaling:	scale <shape_index> <x_scale_amount> <y_scale_amount>\n";
 	cout << "For Displaying: display\n";
 	cout << "For Clearing:   clear\n";
-	cout << "For Comparing Area Size: compare <shape1_index> <shape2_index> \n";
+	cout << "For Comparing Area Sizes: compare <shape1_index> <shape2_index> \n";
 	cout << "To Exit:	exit\n";
 }
 
