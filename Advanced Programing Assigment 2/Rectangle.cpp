@@ -50,13 +50,15 @@ void Rectangle::move(int &newX, int &newY)
 }
 
 int Rectangle::calculateArea()
-{
-	return height * width;
+{	
+	area = height * width;
+	return area;
 }
 
 int Rectangle::calculatePerimeter()
 {
-	return (height + width) * 2;
+	perimeter = (height + width) * 2;
+	return perimeter;
 }
 
 void Rectangle::toString()
@@ -76,6 +78,4 @@ void Rectangle::scale(float scaleX, float scaleY)
 {
 	height = height * scaleX;
 	width = width * scaleY;
-
-	calculatePoint();
 }

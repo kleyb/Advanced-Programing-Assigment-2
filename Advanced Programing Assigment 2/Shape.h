@@ -24,5 +24,7 @@ public:
 	vector<Points> points; //Holds the points
 	friend std::ostream& operator<<(std::ostream& os, Shape& object); //Friend function to overload the stream operator
 	template<class T> friend class compareT;
+protected:
+	int perimeter, area;
 
 };

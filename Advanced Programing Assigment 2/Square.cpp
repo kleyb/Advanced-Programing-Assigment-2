@@ -41,12 +41,14 @@ void Square::move(int &newX, int &newY)
 
 int Square::calculateArea()
 {
-	return edge * edge;
+	area = edge * edge;
+	return area;
 }
 
 int Square::calculatePerimeter()
 {
-	return edge * 4;
+	perimeter = edge * 4;
+	return perimeter;
 }
 
 void Square::toString()
@@ -66,6 +68,5 @@ void Square::toString()
 void Square::scale(float scaleX, float scaleY)
 {
 	edge = edge* scaleX;
-	calculatePoint();
 
 }

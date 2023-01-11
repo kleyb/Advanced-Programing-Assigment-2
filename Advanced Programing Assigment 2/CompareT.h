@@ -1,6 +1,7 @@
 #pragma once
 
-//
+//This template is used to compare the area of 2 shapes
+// It is declared in the Shape header file as a friend class , giving access to the fields of the Shape class 
 template <class T>
 class compareT
 {
@@ -11,11 +12,10 @@ public:
 	};
 	void comparing()
 	{
-		std::cout << "The Shape with the Biggest area is:\n ";
+		std::cout << "The Shape with the Biggest area is:\n\n";
 
-		if (a->calculateArea() > b->calculateArea()) {
+		if (a->area > b->area) {
 			 a->toString();
-
 		}
 		else
 		{

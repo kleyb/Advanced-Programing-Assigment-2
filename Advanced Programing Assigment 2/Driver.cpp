@@ -32,7 +32,7 @@ using namespace std;
 
 void commandsMenu()
 {	// Dispplays all the commands and the format they must be entered 
-	cout << "Please note the commands available to you and remember to enter in the correct format:\n";
+	cout << "\nPlease note the commands available to you and remember to enter in the correct format:\n";
 	cout << "For Rectangle:  addR <x_coordinate_leftTopPoint> <y_coordinate_leftTopPoint> <height> <width>\n";
 	cout << "For Square:	addS <x_coordinate_leftTopPoint> <y_coordinate_leftTopPoint> <edge_length>\n";
 	cout << "For Circle:	addC <x_coordinate_leftTopPoint> <y_coordinate_leftTopPoint> <radius>\n";
@@ -140,33 +140,44 @@ int main()
 			
 		}
 		else if (command.compare("scale") == 0) {
-			// scale object at index
+			
+			if (shapes.empty()) {
+				cout << "There are no shapes to be scaled\n";
+				continue;
+			}
 			// if shape is isotropic , only 'x' is taken into account
-			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < shapes.size()) {
+			else if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < 1) {
 				cout << "The shape you have selected doens't exist" << endl; continue;
 			}
-			else if (parameters.size() > 3) {
-				cout << "You have entered too many parameters\n";
+			else if (parameters.size() != 4 || parameters.size() == 1) {
+				cout << "You have entered too many/little parameters\n";
+				continue;
 			}
+			
 			int shapeNo = stoi(parameters[1]);
 			x = stoi(parameters[2]);
 			y = stoi(parameters[3]);
 			// creates a pointer to a derived class obj of movable, and uses it to scale 
-			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo]);
+			Movable* m = dynamic_cast<Movable*>(shapes[shapeNo-1]);
 			m->scale(x, y);
 			//uses the operator overloading to display the new position
-			cout << *shapes[shapeNo] << endl;
+			cout << *shapes[shapeNo-1] << endl;
 			
 		}
 		else if (command.compare("move") == 0) {
-			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < shapes.size()) {
+			if (shapes.empty()) {
+				cout << "There are no shapes to be moved\n";
+				continue;
+			}			
+			else if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < 1) {
 				// checks if the selected shape to scale exist
 				// if shape doesn't exists ,displays message and continue loop
 				cout << "The shape you have selected doens't exist" << endl; 
 				continue;
 			}
-			else if (parameters.size() > 3) {
-				cout << "You have entered too many parameters\n";
+			else if (parameters.size() != 3 || parameters.size() == 1) {
+				cout << "You have entered too many/little parameters\n";
+				continue;
 			}
 			
 			// move object at index 
@@ -209,13 +220,13 @@ int main()
 		}
 		else if(command.compare("exit") == 0) continue; // Makes sure the game ends when the exit command is entered 
 		else if ( command.compare("compare") == 0) {
-			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < shapes.size()) {
+			if (stoi(parameters[1]) > shapes.size() || (stoi(parameters[1])) < 1) {
 				// checks if the selected shape to scale exist
 				// if shape doesn't exists ,displays message and continue loop
 				cout << "The shape you have selected doens't exist" << endl;
 				continue;
 			}
-			else if (stoi(parameters[2]) > shapes.size() || (stoi(parameters[2])) < shapes.size()) {
+			else if (stoi(parameters[2]) > shapes.size() || (stoi(parameters[2])) < 1) {
 				// checks if the selected shape to scale exist
 				// if shape doesn't exists ,displays message and continue loop
 				cout << "The shape you have selected doens't exist" << endl;
@@ -224,7 +235,7 @@ int main()
 
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
-			compareT<Shape*> shapeM(shapes[x], shapes[y]);
+			compareT<Shape*> shapeM(shapes[x-1], shapes[y-1]);
 			
 			shapeM.comparing();
 		}

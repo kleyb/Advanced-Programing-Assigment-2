@@ -28,13 +28,14 @@ void Circle::calculatePoint(int *newX, int *newY)
 
 int Circle::calculateArea() //Needs to be checked
 {
-	int temp = round(pi * radius * radius);
-	return temp; // returns version of the result 
+	area = round(pi * radius * radius);
+	return area; // returns version of the result 
 }
 
 int Circle::calculatePerimeter() //Needs to be checked
 {
-	return round(2 * pi * radius);
+	perimeter = round(2 * pi * radius);
+	return perimeter;
 }
 
 void Circle::move(int &newX, int &newY)
@@ -65,5 +66,4 @@ void Circle::toString()
 void Circle::scale(float scaleX, float scaleY) 
 {	
 	radius = radius * scaleX; // Uses scaleXx to calculate the scale the radius , therefore scaling the shape
-	calculatePoint();
 }
