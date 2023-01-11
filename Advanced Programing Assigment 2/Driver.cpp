@@ -15,7 +15,6 @@ Otherwise, your code may not pass the test cases...
 GOOD LUCK!
 
 ------------------------------------------------------ */
-
 #include "Shape.h"
 #include "Circle.h"
 #include "Rectangle.h"
@@ -49,7 +48,7 @@ int main()
 	string userCommand = "";
 	vector <Shape*> shapes;     // this one will hold your shapes
 	vector <string> parameters{}; // this one will hold parameters for the commands
-	int x{}, y{}, h{}, e{}, w{}, r{};
+	int x{}, y{}, h{}, e{}, w{}, radius{};
 
 	cout << "Welcome to Shapes Handler\n";
 	
@@ -96,11 +95,12 @@ int main()
 			// Create a instance of the Rectangle obj
 			Rectangle* r = new Rectangle(&x, &y, &h, &w);
 			//Pushes the new obj into the shapes vector
-			shapes.push_back(r);
+			shapes.push_back( r );
 			
 			//Overloaded stream extration operator , 
 			//mofied into accesseing a non-constant obj in order to access it's methods in addition to properties
 			cout << *r << endl;
+			
 			
 		}
 		else if (command.compare("addS") == 0) // compares the user command 
@@ -131,9 +131,9 @@ int main()
 			//gets the parameters 
 			x = stoi(parameters[1]);
 			y = stoi(parameters[2]);
-			r = stof(parameters[3]);
+			radius = stof(parameters[3]);
 		
-			Circle* c = new Circle(&x,&y,r); // new instance of Cicle is created
+			Circle* c = new Circle(&x,&y,radius); // new instance of Cicle is created
 			shapes.push_back(c);
 			//Overloaded stream extration operator 
 			cout << *c << endl;
@@ -175,7 +175,7 @@ int main()
 				cout << "The shape you have selected doens't exist" << endl; 
 				continue;
 			}
-			else if (parameters.size() != 3 || parameters.size() == 1) {
+			else if (parameters.size() != 4 || parameters.size() == 1) {
 				cout << "You have entered too many/little parameters\n";
 				continue;
 			}
@@ -213,10 +213,7 @@ int main()
 		else if (command.compare("clear") == 0) // uses compare method to check the user command
 		{	//Clears the shape vector
 			shapes.clear();
-			
-			//shapes =vector <Shape*>();
-			//vector<Shape*>().swap(shapes);
-			shapes.shrink_to_fit(); // Dealocates the memory ,by reducing the size of array ,equivalent to swapping 
+			shapes.shrink_to_fit(); // Dealocates the memory from heap ,by reducing the size of array ,equivalent to swapping 			
 		}
 		else if(command.compare("exit") == 0) continue; // Makes sure the game ends when the exit command is entered 
 		else if ( command.compare("compare") == 0) {
@@ -247,12 +244,11 @@ int main()
 		{
 			cout << "You have entered an invalid command, please try again\n ";
 		}
-		
 		cout << endl << endl;
 		
 		cout << "Press any key to continue...\n";
 		std::getchar();
 	}
-		return 0;
+	return 0;
 	
 }

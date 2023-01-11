@@ -7,13 +7,16 @@ class compareT
 {
 public:
 	compareT(T obj1, T obj2) {
+		// Copies the objects 
 		a = obj1;
 		b = obj2;
 	};
+	// This method compares the values
 	void comparing()
 	{
 		std::cout << "The Shape with the Biggest area is:\n\n";
 
+		//Compares the 2 objects areas , displays the one which has the biggest area
 		if (a->area > b->area) {
 			 a->toString();
 		}

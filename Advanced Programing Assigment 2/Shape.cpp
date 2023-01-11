@@ -3,7 +3,7 @@
 
 
 Shape::Shape()
-{
+{	//Inialises the objects on the 
 	Points leftTop{};
 	Points rightBottom{};
 	Points leftBottom{};
@@ -11,13 +11,9 @@ Shape::Shape()
 }
 
 Shape::~Shape()
-{
-	delete[] & leftTop;
-	delete[] & rightBottom;
-	delete[] & leftBottom;
-	delete[] & rightTop;
-	delete[] & points;
-	
+{	// Clear the points vectors if there are any points , then dealocates using shrink_to_fit
+	points.clear();
+	points.shrink_to_fit();
 }
 //Base to string function which displays the details of the shape
 void Shape::toString() {
