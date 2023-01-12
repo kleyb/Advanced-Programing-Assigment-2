@@ -205,6 +205,9 @@ int main()
 		}
 		else if (command.compare("clear") == 0) // uses compare method to check the user command
 		{	
+		for (auto s : shapes) {
+			delete s;
+			}
 			shapes.clear();//Clears the shape vector
 			shapes.shrink_to_fit(); // Dealocates the memory from heap ,by reducing the size of array ,equivalent to swapping 			
 		}

@@ -3,7 +3,7 @@
 #include"Shape.h"
 #include"Points.h"
 // Rectangle inherits from Movable class and from Shape 
-class Rectangle : public Movable, public Shape {
+class Rectangle : public Shape, public Movable {
 public:
 	Rectangle(int *x, int *y, int *h, int *w); // The constructor for rectangle uses pointer to define the values of it's fields
 	~Rectangle();
